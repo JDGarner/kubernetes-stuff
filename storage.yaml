@@ -3,20 +3,20 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongo-pvc
 spec:
-  storageClassName: mycloudstorage
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 7Gi
+      storage: 2Gi
 
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: mycloudstorage
-provisioner: pd.csi.storage.gke.io
-parameters:
-  type: pd-balanced
-  csi.storage.k8s.io/fstype: ext4
-volumeBindingMode: WaitForFirstConsumer
+# ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: mycloudstorage
+# provisioner: pd.csi.storage.gke.io
+# parameters:
+#   type: pd-balanced
+#   csi.storage.k8s.io/fstype: ext4
+# volumeBindingMode: WaitForFirstConsumer
