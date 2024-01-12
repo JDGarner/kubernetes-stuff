@@ -3,25 +3,19 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongo-pvc
 spec:
-  storageClassName: mylocalstorage
+  storageClassName: cloud-ssd
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 7Gi
 
 ---
-
+# Google Cloud:
 apiVersion: v1
-kind: PersistentVolume
+kind: StorageClass
 metadata:
-  name: local-storage
+  name: cloud-ssd
 spec:
-  storageClassName: mylocalstorage
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 3Gi
-  hostPath:
-    path: /mnt/storage/mongodb
-    type: DirectoryOrCreate
+  storageClassName: cloud-ssd
+  type:
